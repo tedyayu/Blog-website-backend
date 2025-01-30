@@ -1,10 +1,10 @@
 const model = require("../prismaClient");
 
 const addComment = async(req,res)=>{
-    const { postId, author, email, content } = req.body;
+    const { postId, comment } = req.body;
     try {
-        const comment=await model.addCommentModel(postId, author, email, content)
-        res.json(comment)
+        const createdComment=await model.addCommentModel(postId, comment)
+        res.json(createdComment)
     } catch (err) {
         res.status(400).json({error: "Error adding comment"})
     }
